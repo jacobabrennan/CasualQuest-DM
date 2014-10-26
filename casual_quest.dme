@@ -1,0 +1,87 @@
+// DM Environment file for peregrine_city_light.dme.
+// All manual changes should be made outside the BEGIN_ and END_ blocks.
+// New source code should be placed in .dm files: choose File/New --> Code File.
+
+// BEGIN_INTERNALS
+// END_INTERNALS
+
+// BEGIN_FILE_DIR
+#define FILE_DIR .
+#define FILE_DIR "card_images"
+#define FILE_DIR "classes"
+#define FILE_DIR "customs"
+#define FILE_DIR "customs/d4rk354b3r"
+#define FILE_DIR "customs/dooney1"
+#define FILE_DIR "customs/joram"
+#define FILE_DIR "ice"
+#define FILE_DIR "regions"
+#define FILE_DIR "subscribers"
+#define FILE_DIR "subscribers/caluscorps"
+#define FILE_DIR "subscribers/cauti0n"
+#define FILE_DIR "subscribers/d4rk354b3r"
+#define FILE_DIR "subscribers/f0lak"
+#define FILE_DIR "subscribers/fugsnarf"
+#define FILE_DIR "subscribers/iainperegrine"
+#define FILE_DIR "subscribers/jamckell"
+#define FILE_DIR "subscribers/seferiel"
+#define FILE_DIR "subscribers/sonder"
+#define FILE_DIR "subscribers/williferd"
+#define FILE_DIR "tower"
+#define FILE_DIR "treasures"
+// END_FILE_DIR
+
+// BEGIN_PREFERENCES
+// END_PREFERENCES
+
+// BEGIN_INCLUDE
+#include "__dump_documentation.dm"
+#include "__release_notes.dm"
+#include "_defines.dm"
+#include "appearance.dm"
+#include "card.dm"
+#include "chat.dm"
+#include "combatant.dm"
+#include "enemies.dm"
+#include "hero_projectiles.dm"
+#include "hero_skills.dm"
+#include "heros.dm"
+#include "html.dm"
+#include "intelligence.dm"
+#include "joining.dm"
+#include "key_bindings_editor.dm"
+#include "key_state.dm"
+#include "main_loop.dm"
+#include "map_gen.dm"
+#include "math.dm"
+#include "mover.dm"
+#include "preferences.dm"
+#include "region.dm"
+#include "score.dm"
+#include "secret.dm"
+#include "server_moderation.dm"
+#include "skin.dm"
+#include "summons.dm"
+#include "wrapper.dm"
+#include "x_audio.dm"
+#include "nude_regressia.dmf"
+#include "templates.dmm"
+#include "customs\custom.dm"
+#include "customs\d4rk354b3r\d4rk354b3r.dm"
+#include "customs\dooney1\dooney1.dm"
+#include "customs\joram\joram.dm"
+#include "Deadron\TextHandling\TextHandling.dm"
+#include "ice\ice.dm"
+#include "ice\test1.dm"
+#include "ice\test2.dm"
+#include "subscribers\caluscorps\caluscorps.dm"
+#include "subscribers\cauti0n\cauti0n.dm"
+#include "subscribers\d4rk354b3r\d4rk354b3r.dm"
+#include "subscribers\f0lak\f0lak.dm"
+#include "subscribers\fugsnarf\fugsnarf.dm"
+#include "subscribers\iainperegrine\iainperegrine.dm"
+#include "subscribers\jamckell\jamckell.dm"
+#include "subscribers\seferiel\seferiel.dm"
+#include "subscribers\sonder\sonder.dm"
+#include "subscribers\williferd\williferd.dm"
+// END_INCLUDE
+
