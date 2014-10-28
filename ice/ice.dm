@@ -1,40 +1,4 @@
 game/map/region{
-	tower{
-		parent_type = /game/map/region/castle
-		icon = 'tower.dmi'
-		enemies(wave, boss){
-			var/list/E
-			switch(wave){
-				if(89 to 92){
-					E = list(/game/map/region/ice/enemy/berserker, /game/map/region/ice/enemy/berserker, /game/map/region/ice/enemy/adventurer)
-					}
-				if(93 to 95){
-					E = list(/game/map/region/ice/enemy/druid, /game/map/region/ice/enemy/berserker, /game/map/region/ice/enemy/adventurer)
-					}
-				if(96 to 98){
-					E = list(/game/map/region/ice/enemy/sorcerer, /game/map/region/ice/enemy/berserker, /game/map/region/ice/enemy/adventurer)
-					}
-				if(99 to 100){
-					E = list(/game/map/region/ice/enemy/high_priest, /game/map/region/ice/enemy/sorcerer, /game/map/region/ice/enemy/berserker)
-					}
-				}
-				/*
-				Officer: crab2, mole, gnome
-				Cavalry: bubble, bubble, mole
-				Infantry: crab1, crab1, crab2
-
-				Ice Theme: Freeze, Shiny, Large Crystals
-
-				Adventurer
-				Berserker (Knight)
-				Acolyte
-				Mage (Freeze Sorcerer)
-				Rogue
-				*/
-			return E
-			}
-		}
-	}
 	ice{
 		parent_type = /game/map/region/pagota
 		icon = 'ice.dmi'

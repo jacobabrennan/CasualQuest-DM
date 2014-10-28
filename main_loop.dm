@@ -422,7 +422,7 @@ game{
 				game.stage = STAGE_JOIN
 				// Create Region
 				if(!region){
-					var/region_type = /game/map/region/tower
+					var/region_type = /game/map/region/forest
 					region = new region_type()
 					}
 				// Delete old wave text

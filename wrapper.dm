@@ -1,6 +1,4 @@
 world
-	hub = "iainperegrine.casualquest"
-	hub_password = "C28PnxSyqL1ShCtm"
 	version = 40 // Turn off debug before release!
 
 	view = 21
