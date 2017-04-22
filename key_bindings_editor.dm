@@ -126,11 +126,6 @@ client{
 			params_up[  "command"] = {"key_up [which_command]"}
 			winset(src, "macro_down_[which_command]", list2params(params_down))
 			winset(src, "macro_up_[  which_command]", list2params(params_up  ))
-			/*if(which_command in list("1","2","4","8",1,2,4,8)){
-				//params_down["name"] = which_key+"+REP"
-				//winset(src, "macro_down_[which_command]", list2params(params_down))
-				register_macro("SHIFT+[which_key]", SHIFT|text2num(which_command))
-				}*/
 			if(which_command == PRIMARY){
 				register_macro("SHIFT+[which_key]", SHIFT_PRIMARY)
 				}
