@@ -6,6 +6,7 @@ mob
 client
 	var
 		client/skin/skin
+		is_chat_visible = TRUE
 
 	Topic(href,href_list[])
 		switch(href_list["action"])
@@ -14,6 +15,11 @@ client
 
 			if("show_help")
 				src.help()
+	
+	proc
+		IsUsingWebclient()
+			while(!connection) sleep 1
+			return connection == "web"
 
 	verb
 		web_link(where as text)
@@ -22,6 +28,7 @@ client
 
 		toggle_menu()
 			set name = ".togglemenu"
+			if(IsUsingWebclient()) return
 			var/menu = winget(src, MAIN, "menu")
 			if(menu)
 				winset(src, MAIN, "menu")
@@ -31,6 +38,7 @@ client
 
 		display_size(factor as num)
 			set name = ".displaysize"
+			if(IsUsingWebclient()) return
 			if(factor == -1)
 				if(winget(src, MAIN, "is-maximized") == "true")
 					winset(src, MAIN, "is-maximized='false';")
@@ -52,12 +60,8 @@ client
 
 		toggle_chat()
 			set name = ".togglechat"
-			var/chat = winget(src, "chat", "is-visible")
-			if(chat != "true")
-				winshow(src, "chat")
-
-			else
-				winshow(src, "chat", FALSE)
+			is_chat_visible = !is_chat_visible
+			winshow(src, "chat", is_chat_visible)
 
 		card(which in list(1,2))
 			set name = ".card"
@@ -110,7 +114,7 @@ client/skin{
 		client = _client
 		determine_resolution()
 		debug_menu()
-		center_window(MAIN)
+		// center_window(MAIN)
 		winset(client, MAIN, "focus=true;")
 		hide_card()
 		}
@@ -122,12 +126,19 @@ client/skin{
 			winset(client, "debugcommand","parent=debugmenu;name=\"Command\";command=\".command\"")
 			#endif
 		determine_resolution(){
-			winset(client, "resolution_finder_window", "is-visible=true;is-maximized=true")
-			var/resolution = winget(client, "resolution_finder_label", "pos")
-			winset(client, "resolution_finder_window", "is-visible=false;is-maximized=false")
-			var/comma_pos = findtext(resolution, ",")
-			res_width  = text2num(copytext(resolution, 1, comma_pos))+32
-			res_height = text2num(copytext(resolution, comma_pos +1))+32
+			if(client.IsUsingWebclient()){
+				var size[] = splittext(winget(client, "main", "size"), "x")
+				res_width = text2num(size[1])
+				res_height = text2num(size[2])
+				}
+			else {
+				winset(client, "resolution_finder_window", "is-visible=true;is-maximized=true")
+				var/resolution = winget(client, "resolution_finder_label", "pos")
+				winset(client, "resolution_finder_window", "is-visible=false;is-maximized=false")
+				var/comma_pos = findtext(resolution, ",")
+				res_width  = text2num(copytext(resolution, 1, comma_pos))+32
+				res_height = text2num(copytext(resolution, comma_pos +1))+32
+				}
 			}
 		center_window(window_handle){
 			var/size = winget(client, window_handle, "size")
