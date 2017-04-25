@@ -618,7 +618,7 @@ game/enemy{
 		icon_state = "wizard_1"
 		projectile_type = /game/map/mover/projectile/magic_1
 		var{
-			appearance = 0
+			_appearance = 0
 			last_shoot = 128
 			}
 		New(){
@@ -631,14 +631,14 @@ game/enemy{
 			. = ..()
 			}
 		behavior(){
-			if(appearance){
-				appearance--
-				if(appearance == 96){
+			if(_appearance){
+				_appearance--
+				if(_appearance == 96){
 					icon_state = initial(icon_state)
 					touch_damage = initial(touch_damage)
 					new projectile_type(src)
 					}
-				if(!appearance){
+				if(!_appearance){
 					for(var/game/map/mover/projectile/sand_trap/S in projectiles){
 						del S
 						}
@@ -666,7 +666,7 @@ game/enemy{
 						if(H.y > y){ dir = NORTH}
 						else{        dir = SOUTH}
 						}
-					appearance = 128
+					_appearance = 128
 					touch_damage = 0
 					icon_state = "wizard_flash"
 					}
@@ -699,7 +699,7 @@ game/enemy{
 		height = 8
 		width = 8
 		var{
-			appearance = 0
+			_appearance = 0
 			last_shoot = 128
 			}
 		New(){
@@ -712,18 +712,18 @@ game/enemy{
 			. = ..()
 			}
 		translate(){
-			if(appearance){ return}
+			if(_appearance){ return}
 			. = ..()
 			}
 		behavior(){
-			if(appearance){
-				appearance--
-				if(appearance == 96){
+			if(_appearance){
+				_appearance--
+				if(_appearance == 96){
 					icon_state = initial(icon_state)
 					touch_damage = initial(touch_damage)
 					new /game/map/mover/projectile/sand_trap(src)
 					}
-				if(!appearance){
+				if(!_appearance){
 					for(var/game/map/mover/projectile/sand_trap/S in projectiles){
 						del S
 						}
@@ -742,7 +742,7 @@ game/enemy{
 					c.x = rand(1,world.maxx-2) * TILE_WIDTH    + (TILE_WIDTH -width )/2
 					c.y = rand(1,world.maxy-2) * TILE_HEIGHT   + (TILE_HEIGHT-height)/2
 					redraw()
-					appearance = 128
+					_appearance = 128
 					icon_state = "digger_hidden"
 					}
 				}

@@ -496,13 +496,6 @@ game{
 						local_edge = edge.Copy()
 						continue
 						}
-					/*if(next_map.len >= 2 && !(rand()*4 > 3)){
-						for(var/game/map/tile/passage/P in edge){
-							P.movement = TRUE
-							P.icon_state = "wall"
-							}
-						break
-						}*/
 					var/list/current_passages = edge.Copy()
 					outer_while:{
 						while(current_passages.len){
@@ -643,16 +636,6 @@ game{
 					chest.c.y = round(((world.maxy*TILE_HEIGHT) - chest.height)/2)
 					chest.redraw()
 					}
-				/*for(var/game/map/monster_generator/G in src){
-					if(G.level > enemy_types.len){ continue}
-					var/enemy_type = enemy_types[G.level]
-					if(!enemy_type){ continue}
-					var/game/enemy/E = new enemy_type()
-					E.c = new(
-						round((G.x-0.5)*TILE_WIDTH  - E.width /2),
-						round((G.y-0.5)*TILE_HEIGHT - E.height/2),
-						)
-					}*/
 				// Final Player Prep
 				game.eye.loc = locate(1,1,z_level)
 				for(var/game/hero/H){
@@ -706,15 +689,6 @@ game{
 						break
 						}
 					}
-				/*H.dir = NORTH
-				H.c.y = TILE_HEIGHT
-				switch(game.heros.Find(H)){
-					if(1){ H.c.x = TILE_WIDTH*7}
-					if(2){ H.c.x = TILE_WIDTH*6}
-					if(3){ H.c.x = TILE_WIDTH*8}
-					if(4){ H.c.x = TILE_WIDTH*5}
-					if(5){ H.c.x = TILE_WIDTH*9}
-					}*/
 				H.dir = direction || SOUTH
 				H.invisibility = 0
 				H.invulnerable = INVULNERABLE_TIME
@@ -731,7 +705,7 @@ game{
 					region_types -= /game/map/region/pagota
 					region_types -= /game/map/region/gnome
 					region_types -= /game/map/region/ice
-					var/region_type = pick(region_types)//pick((((typesof(/game/map/region)-/game/map/region)-region.type)-/game/map/region/pagota)-/game/map/region/gnome)
+					var/region_type = pick(region_types)
 					if(wave == 90){
 						region_type = /game/map/region/ice
 						}
