@@ -7,6 +7,7 @@ game/hero {
 game/hero/subscriber/kai{
 	parent_type = /game/hero/subscriber/f0lak
 	}
+game/hero/subscriber/kaiochao/parent_type = .f0lak
 game/hero/subscriber/f0lak{
 	icon = '_hazordhu.dmi'
 	specialtype="f0lak"
