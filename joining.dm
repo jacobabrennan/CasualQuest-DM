@@ -28,10 +28,10 @@ client{
 				host = TRUE
 				}
 			if(host){
-				winset(src, null, "main_menu.moderation.is-disabled='false';")
+				winset(src, "main_menu.moderation", "is-disabled=false;")
 				}
 			else{
-				winset(src, null, "main_menu.moderation.is-disabled='true';")
+				winset(src, "main_menu.moderation", "is-disabled=true;")
 				}
 			}
 		eye = locate("title_screen")
