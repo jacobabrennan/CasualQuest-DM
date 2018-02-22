@@ -1,11 +1,14 @@
-game{
 
-	var{
+
+//-- Audio (Currently Disabled) ------------------------------------------------
+
+game
+	var
 		game/audio_library/audio = new()
-		}
-	audio_library{
+
+	audio_library
 		parent_type = /datum
-		var{
+		var
 			list/sound = list(/*
 				"sword"        = 'sword_1.wav',
 				"axe"          = 'axe_2.wav',
@@ -24,16 +27,9 @@ game{
 			list/music = list(
 
 				)
-			}
-		proc{
-			play_sound(which, who){
-				if(!who){
+		proc
+			play_sound(which, who)
+				if(!who)
 					who = game.heros + game.waiting + game.spectators
-					}
-				if(which in sound){
+				if(which in sound)
 					world << sound(sound[which], FALSE, FALSE, 0, 10)
-					}
-				}
-			}
-		}
-	}

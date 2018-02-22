@@ -1,3 +1,7 @@
+
+
+//-- Hero Projectile Type Defs -------------------------------------------------
+
 game/hero/projectile{
 	parent_type = /game/map/mover/projectile
 	wood_sword{

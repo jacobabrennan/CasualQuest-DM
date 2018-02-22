@@ -1,3 +1,7 @@
+
+
+//------------------------------------------------------------------------------
+
 #define MACRO_BACK "BACK"
 #define MACRO_TAB "TAB"
 #define MACRO_RETURN "RETURN"
@@ -21,16 +25,20 @@
 #define MACRO_SUBTRACT "SUBTRACT"
 #define MACRO_ESCAPE "ESCAPE"
 
-client{
-	var{
+
+//-- Key Bindings Editor -------------------------------------------------------
+
+client
+	var
 		client/key_editor/key_editor
-		}
-	New(){
+
+	New()
 		. = ..()
 		key_editor = new(src)
-		}
-	verb{
-		open_key_editor(){
+
+	verb
+
+		open_key_editor()
 			set name = ".open_key_editor"
 			set hidden = TRUE
 			var/winset_text = {""}
@@ -46,8 +54,8 @@ client{
 			winset(src, null, winset_text)
 			skin.center_window("key_editor")
 			winshow(src, "key_editor")
-			}
-		key_defaults(){
+
+		key_defaults()
 			set name = ".default_keys"
 			key_editor.primary    = initial(key_editor.primary   )
 			key_editor.secondary  = initial(key_editor.secondary )
@@ -78,66 +86,63 @@ client{
 			register_macro(key_editor.south     , 2         )
 			register_macro(key_editor.east      , 4         )
 			register_macro(key_editor.west      , 8         )
-			}
-		register_key(what as text){
+
+		register_key(what as text)
 			set name = ".register_key"
 			set hidden = TRUE
-			if(what == MACRO_ESCAPE){
+			if(what == MACRO_ESCAPE)
 				var/winset_text = {""}
-				for(var/window_id in list("key_editor","main","help","chat")){
+				for(var/window_id in list("key_editor","main","help","chat"))
 					winset_text += "[window_id].is-disabled=false;"
-					}
 				winset_text += "key_capture.is-visible=false;"
 				winset(src, null, winset_text)
 				return
-				}
 			key_editor.register_key(what)
-			}
-		apply_key_bindings(){
+
+		apply_key_bindings()
 			set name = ".apply_key_bindings"
 			set hidden = TRUE
 			winshow(src, "key_editor", FALSE)
 			save_settings()
-			}
-		find_key(which as text){
+
+		find_key(which as text)
 			set name = ".find_key"
 			set hidden = TRUE
 			key_editor.key_waiting = which
 			skin.center_window("key_capture")
 			var/winset_text = {""}
-			for(var/window_id in list("key_editor","main","help","chat")){
+			for(var/window_id in list("key_editor","main","help","chat"))
 				winset_text += "[window_id].is-disabled=false;"
-				}
 			winset_text += "key_capture.is-visible=true;"
 			winset(src, null, winset_text)
-			}
-		}
-	proc{
-		register_macro(which_key, which_command){
+
+	proc
+		register_macro(which_key, which_command)
 			var/list/params_down = new()
 			var/list/params_up   = new()
-			if(!winexists(src, "macro_down_[which_command]")){
+			if(!winexists(src, "macro_down_[which_command]"))
 				params_down["parent"] = "macro"
 				params_up[  "parent"] = "macro"
-				}
 			params_down["name"   ] = which_key
 			params_up[  "name"   ] = which_key+"+UP"
 			params_down["command"] = {"key_down [which_command]"}
 			params_up[  "command"] = {"key_up [which_command]"}
 			winset(src, "macro_down_[which_command]", list2params(params_down))
 			winset(src, "macro_up_[  which_command]", list2params(params_up  ))
-			if(which_command == PRIMARY){
+			if(which_command == PRIMARY)
 				register_macro("SHIFT+[which_key]", SHIFT_PRIMARY)
-				}
-			}
-		}
-	key_editor{
+
+
+//------------------------------------------------------------------------------
+
+client
+	key_editor
 		parent_type = /datum
-		New(var/client/_client){
+		New(var/client/_client)
 			. = ..()
 			client = _client
-			}
-		var{
+
+		var
 			client/client
 			primary = MACRO_SPACE
 			secondary = "z"
@@ -163,61 +168,47 @@ client{
 				MACRO_WEST, MACRO_CENTER, MACRO_EAST,
 				MACRO_SOUTHWEST, MACRO_SOUTH, MACRO_SOUTHWEST,
 				)
-			}
-		proc{
-			register_key(what){
-				for(var/window_id in list("key_editor","main_window","sound_options")){
+
+		proc
+
+			register_key(what)
+				for(var/window_id in list("key_editor","main_window","sound_options"))
 					winset(client, window_id, "is-disabled=false;")
-					}
 				winshow(client, "key_capture", FALSE)
-				switch(key_waiting){
-					if("primary"){
+				switch(key_waiting)
+					if("primary")
 						primary = what
 						winset(client, "key_binding_primary", "text=[what]")
 						client.register_macro(what, PRIMARY)
-						}
-					if("secondary"){
+					if("secondary")
 						secondary = what
 						winset(client, "key_binding_secondary", "text=[what]")
 						client.register_macro(what, SECONDARY)
-						}
-					if("tertiary"){
+					if("tertiary")
 						tertiary = what
 						winset(client, "key_binding_tertiary", "text=[what]")
 						client.register_macro(what, TERTIARY)
-						}
-					if("quaternary"){
+					if("quaternary")
 						quaternary = what
 						winset(client, "key_binding_quaternary", "text=[what]")
 						client.register_macro(what, QUATERNARY)
-						}
-					if("panic"){
+					if("panic")
 						panic = what
 						winset(client, "key_binding_panic", "text=[what]")
 						client.register_macro(what, HELP_KEY)
-						}
-					if("1"){
+					if("1")
 						north = what
 						winset(client, "key_binding_north", "text=[what]")
 						client.register_macro(what, "1")
-						}
-					if("2"){
+					if("2")
 						south = what
 						winset(client, "key_binding_south", "text=[what]")
 						client.register_macro(what, "2")
-						}
-					if("4"){
+					if("4")
 						east = what
 						winset(client, "key_binding_east", "text=[what]")
 						client.register_macro(what, "4")
-						}
-					if("8"){
+					if("8")
 						west = what
 						winset(client, "key_binding_west", "text=[what]")
 						client.register_macro(what, "8")
-						}
-					}
-				}
-			}
-		}
-	}

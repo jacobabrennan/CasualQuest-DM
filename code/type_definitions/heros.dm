@@ -1,74 +1,75 @@
-game{
-	var{
-		list/hero_archetypes = list(
-			"0000" = /game/hero/_blank,
-			"1000" = /game/hero/knight,
-			"2000" = /game/hero/dragoon,
-			"0100" = /game/hero/acolyte,
-			"1100" = /game/hero/paladin,
-			"2100" = list(/game/hero/dragoon, /game/hero/paladin),
-			"0200" = /game/hero/cleric,
-			"1200" = list(/game/hero/cleric, /game/hero/paladin),
-			"0010" = /game/hero/mage,
-			"1010" = /game/hero/dark_knight,
-			"2010" = list(/game/hero/dragoon, /game/hero/dark_knight),
-			"0110" = /game/hero/druid,
-			"0210" = list(/game/hero/cleric, /game/hero/druid),
-			"0020" = /game/hero/wizard,
-			"1020" = list(/game/hero/wizard, /game/hero/dark_knight),
-			"0120" = list(/game/hero/wizard, /game/hero/druid),
-			"0001" = /game/hero/archer,
-			"1001" = /game/hero/barbarian,
-			"2001" = list(/game/hero/dragoon, /game/hero/barbarian),
-			"0101" = /game/hero/bard,
-			"0201" = list(/game/hero/cleric, /game/hero/bard),
-			"0011" = /game/hero/nomad,
-			"0021" = list(/game/hero/wizard, /game/hero/nomad),
-			"0002" = /game/hero/pirate,
-			"1002" = list(/game/hero/pirate, /game/hero/barbarian),
-			"0102" = list(/game/hero/pirate, /game/hero/bard),
-			"0012" = list(/game/hero/pirate, /game/hero/nomad),
-			)
-		list/subscriber_archetypes = list(
-			"0000" = /game/hero/_blank,
-			"1000" = /game/hero/knight,
-			"2000" = /game/hero/dragoon,
-			"3000" = /game/hero/royal_knight,
-			"0100" = /game/hero/acolyte,
-			"1100" = /game/hero/paladin,
-			"2100" = /game/hero/crusader,
-			"0200" = /game/hero/cleric,
-			"1200" = /game/hero/templar,
-			"0300" = /game/hero/high_priest,
-			"0010" = /game/hero/mage,
-			"1010" = /game/hero/dark_knight,
-			"2010" = /game/hero/dark_lancer,
-			"0110" = /game/hero/druid,
-			"1110" = /game/hero/hero,
-			"0210" = /game/hero/sage,
-			"0020" = /game/hero/wizard,
-			"1020" = /game/hero/warlock,
-			"0120" = /game/hero/lich,
-			"0030" = /game/hero/sorcerer,
-			"0001" = /game/hero/archer,
-			"1001" = /game/hero/barbarian,
-			"2001" = /game/hero/warlord,
-			"0101" = /game/hero/bard,
-			"1101" = /game/hero/monk,
-			"0201" = /game/hero/minstrel,
-			"0011" = /game/hero/nomad,
-			"1011" = /game/hero/berserker,
-			"0111" = /game/hero/dervish,
-			"0021" = /game/hero/conjurer,
-			"0002" = /game/hero/pirate,
-			"1002" = /game/hero/assassin,
-			"0102" = /game/hero/gypsy,
-			"0012" = /game/hero/vampire,
-			"0003" = /game/hero/rogue,
-			"1111" = /game/hero/rebel,
-			)
-		}
-	}
+
+
+//------------------------------------------------------------------------------
+
+game/var
+	list/hero_archetypes = list(
+		"0000" = /game/hero/_blank,
+		"1000" = /game/hero/knight,
+		"2000" = /game/hero/dragoon,
+		"0100" = /game/hero/acolyte,
+		"1100" = /game/hero/paladin,
+		"2100" = list(/game/hero/dragoon, /game/hero/paladin),
+		"0200" = /game/hero/cleric,
+		"1200" = list(/game/hero/cleric, /game/hero/paladin),
+		"0010" = /game/hero/mage,
+		"1010" = /game/hero/dark_knight,
+		"2010" = list(/game/hero/dragoon, /game/hero/dark_knight),
+		"0110" = /game/hero/druid,
+		"0210" = list(/game/hero/cleric, /game/hero/druid),
+		"0020" = /game/hero/wizard,
+		"1020" = list(/game/hero/wizard, /game/hero/dark_knight),
+		"0120" = list(/game/hero/wizard, /game/hero/druid),
+		"0001" = /game/hero/archer,
+		"1001" = /game/hero/barbarian,
+		"2001" = list(/game/hero/dragoon, /game/hero/barbarian),
+		"0101" = /game/hero/bard,
+		"0201" = list(/game/hero/cleric, /game/hero/bard),
+		"0011" = /game/hero/nomad,
+		"0021" = list(/game/hero/wizard, /game/hero/nomad),
+		"0002" = /game/hero/pirate,
+		"1002" = list(/game/hero/pirate, /game/hero/barbarian),
+		"0102" = list(/game/hero/pirate, /game/hero/bard),
+		"0012" = list(/game/hero/pirate, /game/hero/nomad),
+	)
+	list/subscriber_archetypes = list(
+		"0000" = /game/hero/_blank,
+		"1000" = /game/hero/knight,
+		"2000" = /game/hero/dragoon,
+		"3000" = /game/hero/royal_knight,
+		"0100" = /game/hero/acolyte,
+		"1100" = /game/hero/paladin,
+		"2100" = /game/hero/crusader,
+		"0200" = /game/hero/cleric,
+		"1200" = /game/hero/templar,
+		"0300" = /game/hero/high_priest,
+		"0010" = /game/hero/mage,
+		"1010" = /game/hero/dark_knight,
+		"2010" = /game/hero/dark_lancer,
+		"0110" = /game/hero/druid,
+		"1110" = /game/hero/hero,
+		"0210" = /game/hero/sage,
+		"0020" = /game/hero/wizard,
+		"1020" = /game/hero/warlock,
+		"0120" = /game/hero/lich,
+		"0030" = /game/hero/sorcerer,
+		"0001" = /game/hero/archer,
+		"1001" = /game/hero/barbarian,
+		"2001" = /game/hero/warlord,
+		"0101" = /game/hero/bard,
+		"1101" = /game/hero/monk,
+		"0201" = /game/hero/minstrel,
+		"0011" = /game/hero/nomad,
+		"1011" = /game/hero/berserker,
+		"0111" = /game/hero/dervish,
+		"0021" = /game/hero/conjurer,
+		"0002" = /game/hero/pirate,
+		"1002" = /game/hero/assassin,
+		"0102" = /game/hero/gypsy,
+		"0012" = /game/hero/vampire,
+		"0003" = /game/hero/rogue,
+		"1111" = /game/hero/rebel,
+	)
 /*
 
 K P M R
@@ -150,11 +151,10 @@ K P M R
 
 	*/
 
-game/hero{
-	var{
+game/hero
+	var
 		client_key
-		description=null
-		//damage
+		description = null
 		speed = 1
 		reverseDamage = 0
 		level_knight = 0
@@ -168,7 +168,6 @@ game/hero{
 		game/hero/skill/skill2
 		game/hero/skill/skill3
 		special_skill=0
-
 		//SPECIAL VARIABLES
 		game/hero/summon/genie/genie
 		bat = FALSE
@@ -177,23 +176,22 @@ game/hero{
 		dash = FALSE
 		endwave = FALSE
 		javelin = FALSE
-		}
-	proc{
-		call_help(){
-			overlays.Add(game.help_overlay)
-			spawn(25){
-				overlays.Remove(game.help_overlay)
-				}
-			}
-		}
-	proc{
-		cast_time(var/time = 0){
+
+	proc/call_help()
+		overlays.Add(game.help_overlay)
+		spawn(25)
+			overlays.Remove(game.help_overlay)
+
+	proc
+		cast_time(var/time = 0)
 			intelligence = new /game/map/mover/intelligence/cast(time)
-			}
-		time_out(var/time = 0){
+		time_out(var/time = 0)
 			intelligence = new /game/map/mover/intelligence/freezer(time)
-			}
-		}
+
+
+//-- Hero Type Defs ------------------------------------------------------------
+
+game/hero{
 	gm{
 		name = "Debug"
 		icon = 'gm.dmi'

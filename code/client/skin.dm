@@ -1,3 +1,7 @@
+
+
+//------------------------------------------------------------------------------
+
 mob
 	Login()
 		client.skin = new(client)
@@ -15,7 +19,7 @@ client
 
 			if("show_help")
 				src.help()
-	
+
 	proc
 		IsUsingWebclient()
 			while(!connection) sleep 1
@@ -103,44 +107,45 @@ client
 				winset(src, null, "chat.input.focus='true';")
 
 
-client/skin{
+//------------------------------------------------------------------------------
+
+client/skin
 	parent_type = /datum
-	var{
+	var
 		client/client
 		res_width
 		res_height
-		}
-	New(var/client/_client){
+
+	New(var/client/_client)
 		client = _client
 		determine_resolution()
 		debug_menu()
 		// center_window(MAIN)
 		winset(client, MAIN, "focus=true;")
 		hide_card()
-		}
-	proc{
+
+	proc
 		debug_menu()
 			#ifdef DEBUG
 			winset(client, "debugmenu", "parent=main_menu;name=Debug")
 			winset(client, "debugmessages","parent=debugmenu;name=\"Messages\";command=\".options\"")
 			winset(client, "debugcommand","parent=debugmenu;name=\"Command\";command=\".command\"")
 			#endif
-		determine_resolution(){
-			if(client.IsUsingWebclient()){
+
+		determine_resolution()
+			if(client.IsUsingWebclient())
 				var size[] = splittext(winget(client, "main", "size"), "x")
 				res_width = text2num(size[1])
 				res_height = text2num(size[2])
-				}
-			else {
+			else
 				winset(client, "resolution_finder_window", "is-visible=true;is-maximized=true")
 				var/resolution = winget(client, "resolution_finder_label", "pos")
 				winset(client, "resolution_finder_window", "is-visible=false;is-maximized=false")
 				var/comma_pos = findtext(resolution, ",")
 				res_width  = text2num(copytext(resolution, 1, comma_pos))+32
 				res_height = text2num(copytext(resolution, comma_pos +1))+32
-				}
-			}
-		center_window(window_handle){
+
+		center_window(window_handle)
 			var/size = winget(client, window_handle, "size")
 			var/x_pos = findtext(size, "x")
 			var/size_x = text2num(copytext(size, 1, x_pos))
@@ -148,37 +153,32 @@ client/skin{
 			var/new_x = round((res_width  - size_x)/2)
 			var/new_y = round((res_height - size_y)/2)-50
 			winset(client, window_handle, "pos=[new_x],[new_y];")
-			}
-		notify_wait(){
+
+		notify_wait()
 			var/wintext = "main.notify.left='notify_wait'; main.notify.is-visible='true';"
 			winset(client, null, wintext)
-			spawn(){
+			spawn()
 				sleep(60)
-				if(client){
+				if(client)
 					wintext = "main.notify.is-visible='false';"
 					winset(client, null, wintext)
-					}
-				}
-			}
-		notify_spectate(){
+
+		notify_spectate()
 			hide_card()
 			var/wintext = "main.notify.left='notify_spectate'; main.notify.is-visible='true';"
 			winset(client, null, wintext)
-			spawn(){
+			spawn()
 				sleep(60)
-				if(client){
+				if(client)
 					wintext = "main.notify.is-visible='false';"
 					winset(client, null, wintext)
-					}
-				}
-			}
-		show_card(var/game/card/_card){
+
+		show_card(var/game/card/_card)
 			var/card_pane = "card"
 			var/custom_path = text2path("/game/hero/custom/[client.ckey]")
 			var/hero_level = client.hero.level_knight + client.hero.level_priest + client.hero.level_mage + client.hero.level_rogue
-			if(custom_path && client.hero && hero_level >= 3){
+			if(custom_path && client.hero && hero_level >= 3)
 				card_pane = "custom_card"
-				}
 			var/wintext = {""}
 			wintext += "[card_pane].card_image.image='[_card.file]';"
 			wintext += "[card_pane].card_info.text='[_card.description]';"
@@ -189,18 +189,18 @@ client/skin{
 			wintext =  "card_display.is-visible='true';"
 			//wintext += "card.focus='true';"
 			winset(client, null, wintext)
-			}
-		hide_card(){
+
+		hide_card()
 			var/wintext = {""}
 			wintext += "card_display.is-visible='false';"
 			//wintext += "main.focus='true';"
 			winset(client, null, wintext)
-			}
-		hide_award(){
+
+		hide_award()
 			winset(client, null, "main.notify.left='award'; main.notify.is-visible='false';")
-			}
-		award(which){
-			switch(which){
+
+		award(which)
+			switch(which)
 				if(1){
 					winset(client, null, {"award_image.image='['award_1.png']'; award_info.text='[AWARD_1]';"})
 					spawn(){ world.SetMedal("Queen's Emerald", client)}
@@ -233,30 +233,25 @@ client/skin{
 					winset(client, null, {"award_image.image='['award_8.png']'; award_info.text='[AWARD_8]';"})
 					spawn(){ world.SetMedal("Bearly Made It", client)}
 					}
-				}
 			winset(client, null, "main.notify.left='award'; main.notify.is-visible='true';")
-			}
-		}
-	}
-client/skin/title_screen{
+
+client/skin/title_screen
 	parent_type = /obj
 	icon = 'title.png'
-	}
-client/skin/game_over{
+
+client/skin/game_over
 	parent_type = /obj
 	icon = 'game_over.png'
-	}
-client/skin/wave_complete{
+
+client/skin/wave_complete
 	parent_type = /obj
 	icon = 'wave_complete.png'
 	layer = MOB_LAYER+2
-	New(){
+	New()
 		. = ..()
 		tag = "wave_complete"
-		}
-	}
-client/skin/wave_text{
+
+client/skin/wave_text
 	parent_type = /obj
 	icon = 'rectangles.dmi'
 	layer = MOB_LAYER+1
-	}
